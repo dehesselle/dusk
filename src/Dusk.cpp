@@ -61,7 +61,7 @@ void Dusk::on_boxStateChanged(const QString& text)
    else
    {
       QWidget* window = m_windows[screenNo];
-      delete window;
+      window->close();
       m_windows.remove(screenNo);
    }
 }
@@ -70,9 +70,9 @@ void Dusk::on_Dusk_finished(int result)
 {
    Q_UNUSED(result);
    for (WindowMap::iterator it = m_windows.begin(); it != m_windows.end(); ++it)
-   {  // delete remaining windows
+   {  // close remaining windows
       QWidget* window = it.value();
-      delete window;
+      window->close();
    }
 }
 
