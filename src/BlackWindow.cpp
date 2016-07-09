@@ -11,8 +11,8 @@ BlackWindow::BlackWindow(QWidget *parent, int screenNo) : QWidget(parent),
 
    setStyleSheet("background-color:black;");
    move(QPoint(scrGeo.x(), scrGeo.y()));
+   setWindowOpacity(0.9);
 }
-
 
 void BlackWindow::closeEvent(QCloseEvent *event)
 {
