@@ -5,6 +5,7 @@
 #include <QSignalMapper>
 #include <QMap>
 #include <QKeyEvent>
+#include "BlackWindow.h"
 
 namespace Ui {
 class Dusk;
@@ -31,11 +32,12 @@ private slots:
    void on_Dusk_finished(int result);
    void setColorCheckbox(int itemNo);
    void resetColorCheckbox(int itemNo);
+   void onWindowClosed(int screenNo);
 
 private:
    Ui::Dusk *ui;
    QSignalMapper* m_signalMapper;
-   typedef QMap<int,QWidget*> WindowMap;
+   typedef QMap<int,BlackWindow*> WindowMap;
    WindowMap m_windows;
 };
 

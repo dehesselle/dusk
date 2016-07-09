@@ -17,13 +17,14 @@ Dusk::Dusk(QWidget *parent) :
     for (int i=0; i<QApplication::desktop()->numScreens(); ++i)
     {
        QString checkBoxText = "Display " + QString::number(i+1);
+       QString command = "toggle " + QString::number(i);
 
        QCheckBox* checkBox = new QCheckBox(this);
        checkBox->setText(checkBoxText);
        ui->verticalLayout->addWidget(checkBox);
 
        connect(checkBox, SIGNAL(stateChanged(int)), m_signalMapper, SLOT(map(void)));
-       m_signalMapper->setMapping(checkBox, checkBoxText);
+       m_signalMapper->setMapping(checkBox, command);
     }
 
     connect(m_signalMapper, SIGNAL(mapped(QString)), this, SIGNAL(boxStateChanged(QString)));
@@ -41,28 +42,32 @@ Dusk::~Dusk()
 
 void Dusk::on_boxStateChanged(const QString& text)
 {
-   int screenNo = text.section(" ", -1, -1).toInt();  // get number at the end
-   --screenNo;
+   QString command = text.section(" ", 0, 0);   // get first word
+   int screenNo = text.section(" ", -1, -1).toInt();  // get last word
 
    QCheckBox* checkBox = dynamic_cast<QCheckBox*>(ui->verticalLayout->itemAt(screenNo)->widget());
 
-   if (checkBox->isChecked())
+   if (command == "toggle")
    {
-      QRect scrGeo = QApplication::desktop()->screenGeometry(screenNo);
-      QWidget* window = new QWidget(this->parentWidget());
-      m_windows[screenNo] = window;
+      if (checkBox->isChecked())
+      {
+         BlackWindow* window = new BlackWindow(this->parentWidget(), screenNo);
+         m_windows[screenNo] = window;
+         connect(window, SIGNAL(windowClosed(int)), this, SLOT(onWindowClosed(int)));
 
-      window->setStyleSheet("background-color:black;");
-      window->move(QPoint(scrGeo.x(), scrGeo.y()));
-      window->showFullScreen();
-
-      activateWindow();
-   }
-   else
-   {
-      QWidget* window = m_windows[screenNo];
-      window->close();
-      m_windows.remove(screenNo);
+         window->showFullScreen();
+         activateWindow();
+      }
+      else
+      {
+         WindowMap::iterator it = m_windows.find(screenNo);
+         if (it != m_windows.end())
+         {
+            BlackWindow* window = it.value();
+            window->close();
+            m_windows.remove(screenNo);
+         }
+      }
    }
 }
 
@@ -71,7 +76,7 @@ void Dusk::on_Dusk_finished(int result)
    Q_UNUSED(result);
    for (WindowMap::iterator it = m_windows.begin(); it != m_windows.end(); ++it)
    {  // close remaining windows
-      QWidget* window = it.value();
+      BlackWindow* window = it.value();
       window->close();
    }
 }
@@ -139,4 +144,11 @@ void Dusk::resetColorCheckbox(int itemNo)
    QCheckBox* checkBox = dynamic_cast<QCheckBox*>(ui->verticalLayout->itemAt(itemNo)->widget());
    checkBox->setStyleSheet("QCheckBox { color: black }");
    checkBox->repaint();
+}
+
+void Dusk::onWindowClosed(int screenNo)
+{
+   m_windows.remove(screenNo);
+   QCheckBox* checkBox = dynamic_cast<QCheckBox*>(ui->verticalLayout->itemAt(screenNo)->widget());
+   checkBox->setChecked(false);
 }
