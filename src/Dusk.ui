@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dusk</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/monitor.ico</normaloff>:/icons/monitor.ico</iconset>
+  </property>
   <layout class="QHBoxLayout">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout"/>
@@ -20,6 +24,8 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

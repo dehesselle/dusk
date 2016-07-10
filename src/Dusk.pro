@@ -22,3 +22,6 @@ HEADERS  += Dusk.h \
     BlackWindow.h
 
 FORMS    += Dusk.ui
+
+RESOURCES += \
+    icons.qrc
