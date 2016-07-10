@@ -25,3 +25,5 @@ FORMS    += Dusk.ui
 
 RESOURCES += \
     icons.qrc
+
+RC_FILE = Dusk.rc
