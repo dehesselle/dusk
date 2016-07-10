@@ -1,3 +1,8 @@
+/* Dusk - a small utility to switch screens to black
+ *
+ * https://github.com/dehesselle/dusk
+ */
+
 #ifndef COLORSWITCHER_H
 #define COLORSWITCHER_H
 

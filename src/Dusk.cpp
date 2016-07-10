@@ -1,3 +1,8 @@
+/* Dusk - a small utility to switch screens to black
+ *
+ * https://github.com/dehesselle/dusk
+ */
+
 #include "Dusk.h"
 #include "ui_Dusk.h"
 #include <QDesktopWidget>
@@ -15,7 +20,8 @@ Dusk::Dusk(QWidget *parent) :
     m_signalMapper = new QSignalMapper(this);
 
     for (int i=0; i<QApplication::desktop()->numScreens(); ++i)
-    {
+    {  // create checkboxes for every display
+
        QString checkBoxText = "Display " + QString::number(i+1);
        QString command = "toggle " + QString::number(i);
 
@@ -30,9 +36,7 @@ Dusk::Dusk(QWidget *parent) :
     connect(m_signalMapper, SIGNAL(mapped(QString)), this, SIGNAL(boxStateChanged(QString)));
     connect(this, SIGNAL(boxStateChanged(QString)), this, SLOT(on_boxStateChanged(QString)));
 
-    QSize size = minimumSizeHint();
-    //size.setWidth(size.width() + 20);
-    resize(size);
+    resize(minimumSizeHint());
 }
 
 Dusk::~Dusk()
@@ -55,8 +59,8 @@ void Dusk::on_boxStateChanged(const QString& text)
          m_windows[screenNo] = window;
          connect(window, SIGNAL(windowClosed(int)), this, SLOT(onWindowClosed(int)));
 
-         window->showFullScreen();
-         activateWindow();
+         window->showFullScreen();   // this also activates the new window...
+         activateWindow();           // ...but we don't want that
       }
       else
       {
