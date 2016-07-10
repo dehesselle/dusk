@@ -12,6 +12,6 @@ Dusk is a little tool that can switch individual screens in your multi-monitor s
 Check the releases page!
 
 ## Additional credits
-- [Qt]("https://www.qt.io")
-- [msys2]("https://github.com/msys2")
-- applicaton icon taken from [Icon Pack 2]("http://aablab.deviantart.com/art/Icon-Pack-2-160714703") by [aablab]("http://aablab.deviantart.com")
+- [Qt](https://www.qt.io)
+- [msys2](https://github.com/msys2)
+- applicaton icon taken from [Icon Pack 2](http://aablab.deviantart.com/art/Icon-Pack-2-160714703) by [aablab](http://aablab.deviantart.com)
