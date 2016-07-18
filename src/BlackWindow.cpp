@@ -8,9 +8,8 @@
 #include <QDesktopWidget>
 #include <QApplication>
 #include <QCloseEvent>
-#include <QIcon>
 
-BlackWindow::BlackWindow(QWidget *parent, int screenNo) : QWidget(parent),
+BlackWindow::BlackWindow(QWidget *parent, int screenNo) : QMainWindow(parent),
    m_screenNo(screenNo),
    m_opacity(0.9)
 {
@@ -19,7 +18,11 @@ BlackWindow::BlackWindow(QWidget *parent, int screenNo) : QWidget(parent),
 
    setStyleSheet("background-color:black;");
    setWindowOpacity(m_opacity);
-   setWindowIcon(QIcon(":/icons/monitor_black.ico"));
+
+// only required if we want to show the windows in the taskbar
+//   setWindowIcon(QIcon(":/icons/monitor_black.ico"));
+//   setWindowTitle(QString("Dusk Overlay (display ") +
+//                  QString::number(m_screenNo + 1) + ")");
 }
 
 void BlackWindow::closeEvent(QCloseEvent *event)
@@ -46,4 +49,9 @@ void BlackWindow::wheelEvent(QWheelEvent *event)
       setWindowOpacity(m_opacity);
    }
    event->accept();
+}
+
+void BlackWindow::keyPressEvent(QKeyEvent *event)
+{
+   QApplication::sendEvent(parentWidget(), event);
 }

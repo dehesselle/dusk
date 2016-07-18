@@ -55,7 +55,8 @@ void Dusk::on_boxStateChanged(const QString& text)
    {
       if (checkBox->isChecked())
       {
-         BlackWindow* window = new BlackWindow(this->parentWidget(), screenNo);
+//         BlackWindow* window = new BlackWindow(this->parentWidget(), screenNo);
+         BlackWindow* window = new BlackWindow(this, screenNo);
          m_windows[screenNo] = window;
          connect(window, SIGNAL(windowClosed(int)), this, SLOT(onWindowClosed(int)));
 
@@ -105,11 +106,11 @@ void Dusk::keyPressEvent(QKeyEvent* event)
       case Qt::Key_F1:
       {
          QMessageBox::about(this, "About Dusk",
-                            QString("Dusk v0.2\n\nThis is a small ") +
+                            QString("Dusk v0.3\n\nThis is a small ") +
                             "tool to switch displays to black.\n" +
                             "https://github.com/dehesselle/dusk\n\n" +
-                            "Additional credits:\n"
-                            "Icon by http://aablab.deviantart.com");
+                            "Developed using msys2, mingw-w64 and Qt.\n"
+                            "Icon by http://aablab.deviantart.com.");
          break;
       }
       default:

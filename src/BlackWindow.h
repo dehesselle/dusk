@@ -6,9 +6,9 @@
 #ifndef BLACKWINDOW_H
 #define BLACKWINDOW_H
 
-#include <QWidget>
+#include <QMainWindow>
 
-class BlackWindow : public QWidget
+class BlackWindow : public QMainWindow
 {
    Q_OBJECT
 public:
@@ -20,6 +20,7 @@ public:
 protected:
    virtual void closeEvent(QCloseEvent *event);
    virtual void wheelEvent(QWheelEvent *event);
+   virtual void keyPressEvent(QKeyEvent *event);
 
 signals:
    void windowClosed(int screenNo);
