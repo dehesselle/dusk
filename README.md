@@ -9,7 +9,7 @@ Dusk is a little tool that can switch individual screens in your multi-monitor s
 - Use your scroll wheel to change the opacity of the black overlay.
 
 ## Download
-Check the releases page!
+Check the [releases](https://github.com/dehesselle/dusk/releases) page!
 
 ## Credits
 Developed using [msys2](https://github.com/msys2), [mingw-w64](http://mingw-w64.org) and [Qt](https://www.qt.io).  
