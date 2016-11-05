@@ -8,9 +8,9 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    Dusk w;
-    w.show();
+    QApplication app(argc, argv);
+    Dusk dusk;
+    dusk.show();
 
-    return a.exec();
+    return app.exec();
 }

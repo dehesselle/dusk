@@ -7,6 +7,7 @@
 #define BLACKWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
 
 class BlackWindow : public QMainWindow
 {
@@ -21,11 +22,16 @@ protected:
    virtual void closeEvent(QCloseEvent *event);
    virtual void wheelEvent(QWheelEvent *event);
    virtual void keyPressEvent(QKeyEvent *event);
+   virtual void mousePressEvent(QMouseEvent *event);
+
+private:
+   QLabel* m_hint;
 
 signals:
    void windowClosed(int screenNo);
 
 public slots:
+   void hideHint();
 };
 
 #endif // BLACKWINDOW_H
