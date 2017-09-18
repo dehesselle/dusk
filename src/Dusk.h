@@ -10,7 +10,7 @@
 #include <QSignalMapper>
 #include <QMap>
 #include <QKeyEvent>
-#include "BlackWindow.h"
+#include "Overlay.h"
 
 namespace Ui {
 class Dusk;
@@ -42,7 +42,7 @@ private slots:
 private:
    Ui::Dusk *ui;
    QSignalMapper* m_signalMapper;
-   typedef QMap<int,BlackWindow*> WindowMap;
+   typedef QMap<int,Overlay*> WindowMap;
    WindowMap m_windows;
 };
 

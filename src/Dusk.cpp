@@ -9,6 +9,7 @@
 #include <QCheckBox>
 #include "ColorSwitcher.h"
 #include <QMessageBox>
+#include "BlackOverlay.h"
 
 Dusk::Dusk(QWidget *parent) :
     QDialog(parent),
@@ -55,11 +56,11 @@ void Dusk::on_boxStateChanged(const QString& text)
    {
       if (checkBox->isChecked())
       {
-         BlackWindow* window = new BlackWindow(this, screenNo);
-         m_windows[screenNo] = window;
-         connect(window, SIGNAL(windowClosed(int)), this, SLOT(onWindowClosed(int)));
+         BlackOverlay* overlay = new BlackOverlay(this, screenNo);
+         m_windows[screenNo] = overlay;
+         connect(overlay, SIGNAL(windowClosed(int)), this, SLOT(onWindowClosed(int)));
 
-         window->showFullScreen();   // this also activates the new window...
+         overlay->showFullScreen();   // this also activates the new window...
          activateWindow();           // ...but we don't want that
       }
       else
@@ -67,8 +68,8 @@ void Dusk::on_boxStateChanged(const QString& text)
          WindowMap::iterator it = m_windows.find(screenNo);
          if (it != m_windows.end())
          {
-            BlackWindow* window = it.value();
-            window->close();
+            Overlay* overlay = it.value();
+            overlay->close();
             m_windows.remove(screenNo);
          }
       }
@@ -80,8 +81,8 @@ void Dusk::on_Dusk_finished(int result)
    Q_UNUSED(result);
    for (WindowMap::iterator it = m_windows.begin(); it != m_windows.end(); ++it)
    {  // close remaining windows
-      BlackWindow* window = it.value();
-      window->close();
+      Overlay* overlay = it.value();
+      overlay->close();
    }
 }
 

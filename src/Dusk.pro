@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         Dusk.cpp \
     ColorSwitcher.cpp \
-    BlackWindow.cpp
+    Overlay.cpp \
+    BlackOverlay.cpp
 
 HEADERS  += Dusk.h \
     ColorSwitcher.h \
-    BlackWindow.h
+    Overlay.h \
+    BlackOverlay.h
 
 FORMS    += Dusk.ui
 

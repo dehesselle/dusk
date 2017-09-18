@@ -3,35 +3,33 @@
  * https://github.com/dehesselle/dusk
  */
 
-#ifndef BLACKWINDOW_H
-#define BLACKWINDOW_H
+#ifndef OVERLAY_H
+#define OVERLAY_H
 
 #include <QMainWindow>
+#include <QObject>
 #include <QLabel>
 
-class BlackWindow : public QMainWindow
+class Overlay : public QMainWindow
 {
    Q_OBJECT
 public:
-   explicit BlackWindow(QWidget *parent = 0, int screenNo = 0);
+   explicit Overlay(QWidget *parent = nullptr, int screenNo = 0);
 
    int m_screenNo;
    qreal m_opacity;
 
 protected:
    virtual void closeEvent(QCloseEvent *event);
-   virtual void wheelEvent(QWheelEvent *event);
+//   virtual void wheelEvent(QWheelEvent *event);
    virtual void keyPressEvent(QKeyEvent *event);
-   virtual void mousePressEvent(QMouseEvent *event);
+//   virtual void mousePressEvent(QMouseEvent *event);
 
-private:
-   QLabel* m_hint;
+   QLabel* m_message;
 
 signals:
    void windowClosed(int screenNo);
 
-public slots:
-   void hideHint();
 };
 
-#endif // BLACKWINDOW_H
+#endif // OVERLAY_H
