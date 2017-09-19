@@ -8,8 +8,6 @@
 
 #include <QDialog>
 #include <QKeyEvent>
-#include <QString>
-#include "Overlay.h"
 
 namespace Ui {
 class Dusk;
