@@ -13,4 +13,4 @@ Check the [releases](https://github.com/dehesselle/dusk/releases) page!
 
 ## Credits
 Developed using [msys2](https://github.com/msys2), [mingw-w64](http://mingw-w64.org) and [Qt](https://www.qt.io).  
-Application icon taken from [Icon Pack 2](http://aablab.deviantart.com/art/Icon-Pack-2-160714703) by [aablab](http://aablab.deviantart.com).
+Application icon by [MazeNL77](http://mazenl77.deviantart.com/).
