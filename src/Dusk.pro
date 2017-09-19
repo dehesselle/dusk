@@ -16,12 +16,16 @@ SOURCES += main.cpp\
         Dusk.cpp \
     ColorSwitcher.cpp \
     Overlay.cpp \
-    BlackOverlay.cpp
+    BlackOverlay.cpp \
+    IdentityOverlay.cpp \
+    CheckBox.cpp
 
 HEADERS  += Dusk.h \
     ColorSwitcher.h \
     Overlay.h \
-    BlackOverlay.h
+    BlackOverlay.h \
+    IdentityOverlay.h \
+    CheckBox.h
 
 FORMS    += Dusk.ui
 

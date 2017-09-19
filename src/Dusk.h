@@ -7,9 +7,8 @@
 #define DUSK_H
 
 #include <QDialog>
-#include <QSignalMapper>
-#include <QMap>
 #include <QKeyEvent>
+#include <QString>
 #include "Overlay.h"
 
 namespace Ui {
@@ -27,23 +26,8 @@ public:
 protected:
    virtual void keyPressEvent(QKeyEvent *event);
 
-signals:
-   void boxStateChanged(const QString& text);
-
-public slots:
-   void on_boxStateChanged(const QString& text);
-
-private slots:
-   void on_Dusk_finished(int result);
-   void setColorCheckbox(int itemNo);
-   void resetColorCheckbox(int itemNo);
-   void onWindowClosed(int screenNo);
-
 private:
    Ui::Dusk *ui;
-   QSignalMapper* m_signalMapper;
-   typedef QMap<int,Overlay*> WindowMap;
-   WindowMap m_windows;
 };
 
 #endif // DUSK_H

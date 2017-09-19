@@ -4,10 +4,8 @@
  */
 
 #include <QApplication>
-#include <QCloseEvent>
 #include <QDesktopWidget>
 #include <QHBoxLayout>
-#include <QKeyEvent>
 #include <QRect>
 #include <QWidget>
 #include "Overlay.h"
@@ -32,7 +30,7 @@ Overlay::Overlay(QWidget *parent, int screenNo) :
 
 void Overlay::closeEvent(QCloseEvent *event)
 {
-   emit windowClosed(m_screenNo);
+   emit overlayClosed();
    QWidget::closeEvent(event);
 }
 

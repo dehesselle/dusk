@@ -12,7 +12,7 @@ BlackOverlay::BlackOverlay(QWidget *parent, int screenNo) :
    setWindowOpacity(0.9);
 
    m_message->setText(QString("Display ") + QString::number(m_screenNo + 1) +
-                      "\n\n" + "scrolling up/down\nadjusts opacity");
+                      "\n\n" + "mousewheel up/down\nadjusts opacity");
    m_message->setStyleSheet("font-weight: bold; color: red;");
    m_message->setAlignment(Qt::AlignCenter);
 

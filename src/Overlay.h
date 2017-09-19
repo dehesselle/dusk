@@ -9,6 +9,8 @@
 #include <QMainWindow>
 #include <QObject>
 #include <QLabel>
+#include <QCloseEvent>
+#include <QKeyEvent>
 
 class Overlay : public QMainWindow
 {
@@ -17,18 +19,15 @@ public:
    explicit Overlay(QWidget *parent = nullptr, int screenNo = 0);
 
    int m_screenNo;
-   qreal m_opacity;
 
 protected:
    virtual void closeEvent(QCloseEvent *event);
-//   virtual void wheelEvent(QWheelEvent *event);
    virtual void keyPressEvent(QKeyEvent *event);
-//   virtual void mousePressEvent(QMouseEvent *event);
 
    QLabel* m_message;
 
 signals:
-   void windowClosed(int screenNo);
+   void overlayClosed();
 
 };
 
