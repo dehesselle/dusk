@@ -31,3 +31,5 @@ RESOURCES += \
     icons.qrc
 
 RC_FILE = Dusk.rc
+
+DEFINES += DUSK_VERSION=\\\"$$system(C:/Portable/msys64/usr/bin/git --git-dir $$PWD/../.git --work-tree $$PWD describe --always --tags)\\\"

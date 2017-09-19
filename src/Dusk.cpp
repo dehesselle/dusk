@@ -52,8 +52,9 @@ void Dusk::keyPressEvent(QKeyEvent* event)
       case Qt::Key_F1:
       {
          QMessageBox::about(this, "About Dusk",
-                            QString("Dusk v0.5\n\nThis is a small ") +
-                            "tool to switch displays to black.\n" +
+                            QString("Dusk ") + DUSK_VERSION +
+                            QString("\n\nThis is a small ") +
+                            "tool to dim displays to black.\n" +
                             "https://github.com/dehesselle/dusk\n\n" +
                             "Developed using msys2, mingw-w64 and Qt.\n"
                             "Icon by http://aablab.deviantart.com.");
