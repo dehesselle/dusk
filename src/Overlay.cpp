@@ -38,4 +38,3 @@ void Overlay::keyPressEvent(QKeyEvent *event)
 {
    QApplication::sendEvent(parentWidget(), event);
 }
-

@@ -28,7 +28,6 @@ protected:
 
 signals:
    void overlayClosed();
-
 };
 
 #endif // OVERLAY_H

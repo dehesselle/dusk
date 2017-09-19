@@ -1,3 +1,8 @@
+/* Dusk - a small utility to switch screens to black
+ *
+ * https://github.com/dehesselle/dusk
+ */
+
 #ifndef BLACKOVERLAY_H
 #define BLACKOVERLAY_H
 
@@ -17,7 +22,7 @@ protected:
 
 public slots:
    void hideMessage();
-  
+
 };
 
 #endif // BLACKOVERLAY_H

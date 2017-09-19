@@ -14,14 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         Dusk.cpp \
-    ColorSwitcher.cpp \
     Overlay.cpp \
     BlackOverlay.cpp \
     IdentityOverlay.cpp \
     CheckBox.cpp
 
 HEADERS  += Dusk.h \
-    ColorSwitcher.h \
     Overlay.h \
     BlackOverlay.h \
     IdentityOverlay.h \

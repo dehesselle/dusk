@@ -1,3 +1,8 @@
+/* Dusk - a small utility to switch screens to black
+ *
+ * https://github.com/dehesselle/dusk
+ */
+
 #include <QFont>
 #include <QString>
 #include <QTimer>
@@ -25,7 +30,6 @@ BlackOverlay::BlackOverlay(QWidget *parent, int screenNo) :
    QTimer::singleShot(2000, this, SLOT(hideMessage()));
 }
 
-
 void BlackOverlay::hideMessage()
 {
    m_message->hide();
@@ -50,17 +54,17 @@ void BlackOverlay::wheelEvent(QWheelEvent *event)
    event->accept();
 }
 
-
 void BlackOverlay::mousePressEvent(QMouseEvent *event)
 {
    if (event->button() == Qt::LeftButton)
    {
-      if (m_message->isHidden())   // nothing else is using m_hint right now,
-                                // e.g. the initial message (see constructor)
-                                // is already gone
+      if (m_message->isHidden())   // nothing else is using m_message right now,
+                                   // i.e. the initial message (see constructor)
+                                   // is already gone
       {
-         m_message->setText(QString("Display ") + QString::number(m_screenNo + 1) +
-                         "\n\n" + "click again\nto close");
+         m_message->setText(QString("Display ") +
+                            QString::number(m_screenNo + 1) +
+                            "\n\n" + "click again\nto close");
 
          // We are reusing the properties (font size, color etc.) that have
          // already been set in the constructor.

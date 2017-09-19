@@ -1,3 +1,8 @@
+/* Dusk - a small utility to switch screens to black
+ *
+ * https://github.com/dehesselle/dusk
+ */
+
 #include "CheckBox.h"
 #include "BlackOverlay.h"
 
@@ -14,8 +19,10 @@ void CheckBox::on_stateChanged(int state)
    switch (state)
    {
       case Qt::Unchecked:
+      {
          emit unchecked();
          break;
+      }
       case Qt::Checked:
       {
          BlackOverlay *overlay = new BlackOverlay(this, m_screenNo);
@@ -27,10 +34,11 @@ void CheckBox::on_stateChanged(int state)
          break;
       }
       default:
+      {
          break;
+      }
    }
 }
-
 
 void CheckBox::uncheck()
 {

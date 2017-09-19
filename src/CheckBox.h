@@ -1,3 +1,8 @@
+/* Dusk - a small utility to switch screens to black
+ *
+ * https://github.com/dehesselle/dusk
+ */
+
 #ifndef CHECKBOX_H
 #define CHECKBOX_H
 
@@ -19,7 +24,6 @@ signals:
 private slots:
    void uncheck();
    void on_stateChanged(int state);
-
 };
 
 #endif // CHECKBOX_H
