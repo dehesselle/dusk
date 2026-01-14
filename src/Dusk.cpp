@@ -52,11 +52,10 @@ void Dusk::keyPressEvent(QKeyEvent* event)
       {
           QMessageBox::about(this,
                              "About Dusk",
-                             QString("Dusk ") + PROJECT_VERSION + QString("\n\nThis is a small ")
-                                 + "tool to dim displays.\n"
-                                   "https://github.com/dehesselle/dusk\n\n"
-                                   "Developed using msys2, mingw-w64 and Qt.\n"
+                             QString("Dusk ") + PROJECT_VERSION + QString("\n\n")
+                                 + "https://github.com/dehesselle/dusk\n"
                                    "Icon by MazeNL77.");
+          QMessageBox::aboutQt(this);
           break;
       }
       case Qt::Key_1:
