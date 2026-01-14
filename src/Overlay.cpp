@@ -4,7 +4,6 @@
  */
 
 #include <QApplication>
-#include <QDesktopWidget>
 #include <QHBoxLayout>
 #include <QRect>
 #include <QWidget>
@@ -14,18 +13,18 @@ Overlay::Overlay(QWidget *parent, int screenNo) :
    QMainWindow(parent),
    m_screenNo(screenNo)
 {
-   QRect scrGeo = QApplication::desktop()->screenGeometry(m_screenNo);
-   move(QPoint(scrGeo.x(), scrGeo.y()));
+    QRect scrGeo = QApplication::screens()[screenNo]->geometry();
+    move(QPoint(scrGeo.x(), scrGeo.y()));
 
-   m_message = new QLabel(this);
+    m_message = new QLabel(this);
 
-   // Usually one has to create a layout and use QWidget::setLayout(),
-   // but QMainWindow is special in that case.
+    // Usually one has to create a layout and use QWidget::setLayout(),
+    // but QMainWindow is special in that case.
 
-   QHBoxLayout* layout = new QHBoxLayout;
-   m_message->setLayout(layout);
+    QHBoxLayout *layout = new QHBoxLayout;
+    m_message->setLayout(layout);
 
-   setCentralWidget(m_message);
+    setCentralWidget(m_message);
 }
 
 void Overlay::closeEvent(QCloseEvent *event)

@@ -37,19 +37,13 @@ void BlackOverlay::hideMessage()
 
 void BlackOverlay::wheelEvent(QWheelEvent *event)
 {
-   if (event->orientation() == Qt::Vertical)
-   {
-      if (event->delta() > 0)
-      {
-         if (windowOpacity() < 1.0)
+    if (event->angleDelta().y() > 0) {
+        if (windowOpacity() < 1.0)
             setWindowOpacity(windowOpacity() + 0.1);
-      }
-      else
-      {
-         if (windowOpacity() > 0.2)
+    } else {
+        if (windowOpacity() > 0.2)
             setWindowOpacity(windowOpacity() - 0.1);
-      }
-   }
+    }
 
    event->accept();
 }
